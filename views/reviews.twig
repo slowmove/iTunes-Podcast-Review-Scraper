@@ -1,16 +1,16 @@
 <h1>Reviews</h1>
 <ul>
-	{% for review in reviews %}
+	{% for review in podcastReviews %}
         <li>
-			<strong>lang:</strong> {{review.language}}
+			<strong>lang:</strong> {{review.locale}}
 			<br/>
-			<strong>author:</strong> {{review.author.name}}
+			<strong>author:</strong> {{review.author.name.label}}
 			<br/>
-			<strong>rating:</strong> {{review.im:rating}}
+			<strong>rating:</strong> {{review['im:rating'].label}}
 			<br/>
-			<strong>title:</strong> {{review.title}}
+			<strong>title:</strong> {{review.title.label}}
 			<br/>
-			{{review.content}}
+			{{review.content.label}}
 		</li>
     {% endfor %}
 </ul>
