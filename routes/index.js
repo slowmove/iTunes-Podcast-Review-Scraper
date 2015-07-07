@@ -12,6 +12,9 @@ module.exports = function(app) {
 		});		     
     });
 	
+	/**
+	 * The route that receives the search query from the form on the start page
+	 */
 	app.get('/search', function(req, res) {
 		var searchParameter = req.query.search;
 		podcastRepository.searchPodcast(searchParameter, function(searchResult) {

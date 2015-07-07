@@ -123,14 +123,16 @@ module.exports = (function(){
 		}
 	};
 	
+	/**
+	 * Find the last page number to be able to iterate up thru the pages
+	 */
 	var setLastPage = function(jsonObj, callback) {
 		var links = jsonObj.feed.link;
 		for (var i = 0; i < links.length; i++) {
 			var link = links[i]['attributes'];
 			var rel = link['rel'];
 			var href = link['href'];
-			
-			// Find the last page number
+						
 			if (rel == 'last') {
 				var urlSplit = href.split('/');
 				for (var index = 0; index < urlSplit.length; index++) {
