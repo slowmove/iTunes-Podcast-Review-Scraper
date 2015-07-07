@@ -1,0 +1,10 @@
+<h1>Podcasts</h1>
+<ul>
+	{% for podcast in podcasts %}
+        <li>
+			<a href="/podcast/{{ podcast.podcastId }}/reviews">
+				{{ podcast.label }}
+			</a>
+		</li>
+    {% endfor %}
+</ul>

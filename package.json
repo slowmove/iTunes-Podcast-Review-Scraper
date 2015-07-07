@@ -1,0 +1,20 @@
+{
+  "name": "poc-itunes-ratings",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "dependencies": {
+    "express": "^4.13.1",
+    "mongodb": "^2.0.35",
+    "monk": "^1.0.1",
+    "request": "^2.58.0",
+    "twig": "^0.8.2",
+    "underscore": "^1.8.3"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}

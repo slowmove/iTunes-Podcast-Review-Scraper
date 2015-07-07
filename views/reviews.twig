@@ -1,0 +1,16 @@
+<h1>Reviews</h1>
+<ul>
+	{% for review in reviews %}
+        <li>
+			<strong>lang:</strong> {{review.language}}
+			<br/>
+			<strong>author:</strong> {{review.author.name}}
+			<br/>
+			<strong>rating:</strong> {{review.im:rating}}
+			<br/>
+			<strong>title:</strong> {{review.title}}
+			<br/>
+			{{review.content}}
+		</li>
+    {% endfor %}
+</ul>
