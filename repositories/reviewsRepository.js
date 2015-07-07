@@ -10,7 +10,7 @@ module.exports = (function(){
 		},{}, function(e, docs) {	
 			if(docs.length < 1) {
 				var indexer = require('services/indexer');
-				indexer.startJob();
+				indexer.startJob(podcastId);
 			}					
 			callback(docs);
 		});

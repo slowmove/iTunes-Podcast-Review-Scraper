@@ -16,7 +16,7 @@ var config = require('config');
 var startIndexerService = process.argv.indexOf('--indexer') > -1 ? true : false;
 if(startIndexerService) {
     var indexerService = require('services/indexer');
-    indexerService.startJob();
+    indexerService.startJob(null);
 } else {
     /**
      * Start App Server

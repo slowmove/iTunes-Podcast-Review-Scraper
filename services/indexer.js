@@ -14,29 +14,40 @@ module.exports = (function(){
 	/**
 	 * Start the indexing job
 	 */
-	var startJob = function() {
-		console.log("Starting job");
-		/**
-		 * Get the available podcasts from database
-		 */
-		podcastRepository.getPodcasts(function(podcasts) {
-			console.log("Found "+ podcasts.length + " podcasts");
-			/**
-			 * iterate thru them to fetch reviews for each one
-			 */
-			podcasts.forEach(function(podcast) {
+	var startJob = function(singlePodcast) {
+		if(singlePodcast != null) {
+			console.log("Starting indexing one podcast");
+			languages.forEach(function(lang) {
+				console.log("Indexing " + singlePodcast + " on " + lang);
 				/**
-				 * for each podcast we have to check each language in config
+				 * call the indexer
 				 */
-				languages.forEach(function(lang) {
-					console.log("Indexing " + podcast.podcastId + " on " + lang);
+				indexReviews(lang, singlePodcast);
+			});				
+		} else {
+			console.log("Starting job");
+			/**
+			 * Get the available podcasts from database
+			 */
+			podcastRepository.getPodcasts(function(podcasts) {
+				console.log("Found "+ podcasts.length + " podcasts");
+				/**
+				 * iterate thru them to fetch reviews for each one
+				 */
+				podcasts.forEach(function(podcast) {
 					/**
-					 * call the indexer
+					 * for each podcast we have to check each language in config
 					 */
-					indexReviews(lang, podcast.podcastId);
-				});				
-			});	
-		});
+					languages.forEach(function(lang) {
+						console.log("Indexing " + podcast.podcastId + " on " + lang);
+						/**
+						 * call the indexer
+						 */
+						indexReviews(lang, podcast.podcastId);
+					});				
+				});	
+			});
+		}
 	};
 	
 	var indexReviews = function(lang, podcastId, callback) {		
@@ -100,7 +111,7 @@ module.exports = (function(){
 		 * Add to the pagination and call getItems once more with the new page
 		 */
 		if(currentPage < endPage) {
-			console.log("Page " + currentPage+1 + " of " + endPage);
+			console.log("Page " + (currentPage*1)+1 + " of " + endPage);
 			currentPage++;
 			getItems(lang, podcastId, currentPage+1);
 		}

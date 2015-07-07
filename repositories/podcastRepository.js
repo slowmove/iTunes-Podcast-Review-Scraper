@@ -18,7 +18,7 @@ module.exports = (function(){
 	
 	var addPodcast = function(id, name, callback) {
 		var indexer = require('services/indexer');
-		indexer.startJob();
+		indexer.startJob(id);
 		
 		var entry = {
 			podcastId: id,

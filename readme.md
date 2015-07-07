@@ -7,3 +7,6 @@ iTunes Reviews Scraper
 ## run
 First start mongodb,
 then ```node app.js```
+
+to run the indexing
+run ```node app.js --indexer```
