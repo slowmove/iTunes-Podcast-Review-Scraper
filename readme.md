@@ -17,3 +17,5 @@ then ```node app.js```
 
 to run the indexing
 run ```node app.js --indexer```
+
+go to [http://localhost:9999/](http://localhost:9999/)
