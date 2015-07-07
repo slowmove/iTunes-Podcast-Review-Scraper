@@ -31,20 +31,24 @@ module.exports = (function(){
 	};
 	
 	var indexReviews = function(podcastId, callback) {
-		var indexerService = require('services/indexer');		
-		indexerService.indexReviews(podcastId, function(reviews){
-			_.each(reviews, function(review) {
-				review.podcastId = podcastId;
-				review.id = review.id.label;
-				collection.update({
-					id: review.id
-				}, review, {
-					upsert: true
-				});
-			});
-			// return data to route
-			callback(reviews);
-		});
+		var indexerService = require('services/indexer');
+		var config = require('config');	
+		var languages = config.application.languages;		
+		_.each(languages, function(lang) {
+			indexerService.indexReviews(lang, podcastId, function(reviews){
+				_.each(reviews, function(review) {
+					review.podcastId = podcastId;
+					review.id = review.id.label;
+					review.locale = lang;
+					collection.update({
+						id: review.id
+					}, review, {
+						upsert: true
+					});
+				});								
+			});							
+		});		
+		callback();		
 	};
 	
 	return {

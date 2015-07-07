@@ -3,7 +3,7 @@ module.exports = function(app) {
 
     app.get('/podcast/:id/reviews', function(req, res){
 		var podcastId = req.params.id;		
-		reviewsRepository.getReviews(podcastId, function(reviews){
+		reviewsRepository.getReviews(podcastId, function(){
 			res.send(reviews);
 			/*res.render('../views/reviews.twig', {
 				reviews: reviews
