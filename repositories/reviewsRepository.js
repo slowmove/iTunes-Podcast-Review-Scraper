@@ -7,7 +7,11 @@ module.exports = (function(){
 	var getReviews = function(podcastId, callback) {						
 		collection.find({
 			podcastId: podcastId
-		},{}, function(e, docs) {						
+		},{}, function(e, docs) {	
+			if(docs.length < 1) {
+				var indexer = require('services/indexer');
+				indexer.startJob();
+			}					
 			callback(docs);
 		});
 	};
