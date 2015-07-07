@@ -7,12 +7,8 @@ config.application = {};
 config.application.languages = [
 	"SE",
 	"US",
-	"UK",
-	"DE",
 	"se",
-	"us",
-	"uk",
-	"de"	
+	"us"		
 ];
 
 module.exports = config;

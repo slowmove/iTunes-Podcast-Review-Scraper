@@ -8,13 +8,13 @@
 	</form>
 </div>
 <div class="row">
-	<h2>Indexerade Podcasts</h2>
+	<h2>Resultat</h2>
 	{% for podcast in podcasts %}
 		<div class="col-md-6">
-			{{ podcast.label }}
+			{{ podcast.collectionName }}
 		</div>
 		<div class="col-md-6">
-			<a href="/podcast/{{ podcast.podcastId }}/reviews">
+			<a href="/podcast/{{ podcast.collectionId }}/reviews">
 				Reviews
 			</a>
 		</div>	

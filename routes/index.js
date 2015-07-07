@@ -11,4 +11,13 @@ module.exports = function(app) {
 			}); 
 		});		     
     });
+	
+	app.get('/search', function(req, res) {
+		var searchParameter = req.query.search;
+		podcastRepository.searchPodcast(searchParameter, function(searchResult) {
+			res.render('../views/search.twig', {
+				podcasts: searchResult
+			});
+		});
+	});
 }

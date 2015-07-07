@@ -1,14 +1,30 @@
+var request = require('request');
 var database = require('database/db');
 
 module.exports = (function(){
-	var getPodcasts = function(callback){		
-		var collection = database.mongodb.get('podcasts');
+	var collection = database.mongodb.get('podcasts');
+	
+	var searchPodcast = function(term, callback) {
+		var endpoint = 'https://itunes.apple.com/search?entity=podcast&term=' + encodeURIComponent(term);
+		console.log(endpoint);
+		request(endpoint, function (error, response, body) {
+			if (!error && response.statusCode == 200) {			    					
+				var data = JSON.parse(body);
+				console.log(data.results);
+				var results = data.results != null ? data.results : [];
+				callback(results);
+		  	}
+		});			
+	};
+	
+	var getPodcasts = function(callback) {				
 		collection.find({},{}, function(e, docs){			
 			callback(docs);
 		});
 	};
 	
 	return {
+		searchPodcast: searchPodcast,
 		getPodcasts: getPodcasts
 	}
 })();
