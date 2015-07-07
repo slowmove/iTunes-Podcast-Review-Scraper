@@ -1,10 +1,20 @@
+{% include 'header.twig' %}
 <h1>Podcasts</h1>
-<ul>
+<div class="row">
 	{% for podcast in podcasts %}
-        <li>
+		<div class="col-md-4">
+			{{ podcast.label }}
+		</div>
+		<div class="col-md-4">
 			<a href="/podcast/{{ podcast.podcastId }}/reviews">
-				{{ podcast.label }}
+				Reviews
 			</a>
-		</li>
-    {% endfor %}
-</ul>
+		</div>
+		<div class="col-md-4">
+			<a href="/podcast/{{ podcast.podcastId }}/index">
+				Indexera
+			</a>
+		</div>					
+	{% endfor %}
+</div>
+{% include 'footer.twig' %}
