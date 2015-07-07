@@ -1,5 +1,4 @@
 var _ = require('underscore');
-
 var database = require('database/db');
 
 module.exports = (function(){
