@@ -1,5 +1,5 @@
-var _ = require('underscore');
-var database = require('database/db');
+var _ = require('underscore'),
+	database = require('database/db');
 
 module.exports = (function(){
 	var collection = database.mongodb.get('reviews');

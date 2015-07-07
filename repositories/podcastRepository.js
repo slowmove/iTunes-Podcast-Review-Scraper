@@ -1,5 +1,5 @@
-var request = require('request');
-var database = require('database/db');
+var request = require('request'),
+	database = require('database/db');
 
 module.exports = (function(){
 	var collection = database.mongodb.get('podcasts');

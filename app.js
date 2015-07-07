@@ -5,9 +5,8 @@ var express = require('express'),
     fs = require('fs'),
     twig = require('twig'),
     _ = require('underscore'),
-    db = require('database/db');
-
-var config = require('config');
+    db = require('database/db'),
+    config = require('config');
 
 /**
  * Make it possible to start with process arguments from terminal
