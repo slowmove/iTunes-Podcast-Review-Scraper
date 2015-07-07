@@ -2,19 +2,14 @@
 <h1>Podcasts</h1>
 <div class="row">
 	{% for podcast in podcasts %}
-		<div class="col-md-4">
+		<div class="col-md-6">
 			{{ podcast.label }}
 		</div>
-		<div class="col-md-4">
+		<div class="col-md-6">
 			<a href="/podcast/{{ podcast.podcastId }}/reviews">
 				Reviews
 			</a>
-		</div>
-		<div class="col-md-4">
-			<a href="/podcast/{{ podcast.podcastId }}/index">
-				Indexera
-			</a>
-		</div>					
+		</div>	
 	{% endfor %}
 </div>
 {% include 'footer.twig' %}
