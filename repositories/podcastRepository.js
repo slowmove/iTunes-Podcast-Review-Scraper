@@ -16,6 +16,20 @@ module.exports = (function(){
 		});			
 	};
 	
+	var addPodcast = function(id, name, callback) {
+		var entry = {
+			podcastId: id,
+			label: name	
+		};
+		collection.update({
+			podcastId: id
+		}, entry, {
+			upsert: true
+		});
+		
+		callback();
+	};
+	
 	var getPodcasts = function(callback) {				
 		collection.find({},{}, function(e, docs){			
 			callback(docs);
@@ -24,6 +38,7 @@ module.exports = (function(){
 	
 	return {
 		searchPodcast: searchPodcast,
+		addPodcast: addPodcast,
 		getPodcasts: getPodcasts
 	}
 })();

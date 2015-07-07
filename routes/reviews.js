@@ -1,5 +1,6 @@
 module.exports = function(app) {
 	var reviewsRepository = require('repositories/reviewsRepository');
+	var podcastRepository = require('repositories/podcastRepository');
 
 	/**
 	 * Shows reviews for a single podcast by id
@@ -13,4 +14,16 @@ module.exports = function(app) {
 			}); 
 		});		     
     });
+	
+	/**
+	 * Index a specific podcast
+	 */
+	 app.get('/podcast/:id/:name/index', function(req, res) {
+		 var podcastId = req.params.id;
+		 var label = req.params.name;
+		 
+		 podcastRepository.addPodcast(podcastId, label, function(){
+			 res.redirect('/');
+		 });
+	});
 }
