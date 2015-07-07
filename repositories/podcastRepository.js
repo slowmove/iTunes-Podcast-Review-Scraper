@@ -10,7 +10,6 @@ module.exports = (function(){
 		request(endpoint, function (error, response, body) {
 			if (!error && response.statusCode == 200) {			    					
 				var data = JSON.parse(body);
-				console.log(data.results);
 				var results = data.results != null ? data.results : [];
 				callback(results);
 		  	}
