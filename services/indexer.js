@@ -15,12 +15,12 @@ module.exports = (function(){
 	 * Start the indexing job
 	 */
 	var startJob = function() {
-		console.log("startar jobb");
+		console.log("Starting job");
 		/**
 		 * Get the available podcasts from database
 		 */
 		podcastRepository.getPodcasts(function(podcasts) {
-			console.log("hittade "+ podcasts.length + " podcasts");
+			console.log("Found "+ podcasts.length + " podcasts");
 			/**
 			 * iterate thru them to fetch reviews for each one
 			 */
@@ -29,7 +29,7 @@ module.exports = (function(){
 				 * for each podcast we have to check each language in config
 				 */
 				languages.forEach(function(lang) {
-					console.log("indexerar " + podcast.podcastId + " på " + lang);
+					console.log("Indexing " + podcast.podcastId + " on " + lang);
 					/**
 					 * call the indexer
 					 */
@@ -66,7 +66,7 @@ module.exports = (function(){
 						var entries = jsonObj.feed.entry;
 						if(entries != null) {
 							entries.splice(0,1);		
-							console.log(entries.length + " items");
+							console.log(entries.length + " items for " + lang);
 							/**
 							 * Save the entries
 							 */		
@@ -100,7 +100,7 @@ module.exports = (function(){
 		 * Add to the pagination and call getItems once more with the new page
 		 */
 		if(currentPage < endPage) {
-			console.log("Kör sida " + currentPage+1 + " av " + endPage);
+			console.log("Page " + currentPage+1 + " of " + endPage);
 			currentPage++;
 			getItems(lang, podcastId, currentPage+1);
 		}
@@ -108,7 +108,7 @@ module.exports = (function(){
 		 * If the current page is the same as the last, we're done
 		 */
 		if(currentPage == endPage) {
-			console.log("indexering färdig");
+			console.log("indexing finished for " + lang);
 		}
 	};
 	
